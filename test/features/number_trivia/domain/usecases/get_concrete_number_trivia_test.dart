@@ -11,16 +11,19 @@ import 'package:number_trivia/features/number_trivia/domain/usecases/get_concret
 import 'get_concrete_number_trivia_test.mocks.dart';
 
 void main() {
+  late MockNumberTriviaRepository mockNumberTriviaRepository;
+  late GetConcreteNumberTrivia useCase;
+
+  setUp(() {
+    mockNumberTriviaRepository = MockNumberTriviaRepository();
+    useCase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
+  });
+
+  const testNumber = 1;
+  const testNumberTrivia = NumberTrivia(text: 'test', number: testNumber);
+
   test('should get trivia for the number repository', () async {
     // arrange
-    const testNumber = 1;
-    const testNumberTrivia = NumberTrivia(text: 'test', number: testNumber);
-
-    MockNumberTriviaRepository mockNumberTriviaRepository =
-        MockNumberTriviaRepository();
-    GetConcreteNumberTrivia useCase =
-        GetConcreteNumberTrivia(mockNumberTriviaRepository);
-
     when(mockNumberTriviaRepository.getConcreteNumberTrivia(testNumber))
         .thenAnswer((_) async => const Right(testNumberTrivia));
 
