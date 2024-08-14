@@ -1,9 +1,12 @@
-# Presentation
+# Clean Architecture
+
+## Presentation
+
 - Widgets
 - Presentation Logic Holders (State management)
 
+## Domain
 
-# Domain
 Complete independent of the others layers
 
 - Use cases
@@ -12,11 +15,10 @@ Complete independent of the others layers
 - Repositories (Edge between Domain and Data)
 - Abstract Repositories (Edge between Domain and Data)
 
+## Data
 
-# Data
 - Repositories (Edge between Domain and Data)
 - Concrete Repositories (Edge between Domain and Data)
 
 - Models: Holder for data parsing logic
 - Data Source
-
