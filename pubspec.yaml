@@ -18,14 +18,14 @@ dependencies:
   equatable: ^2.0.5
   dartz: ^0.10.1
   cross_connectivity: ^3.0.5
-  http: ^0.13.5
+  http: ^1.2.2
   shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
   mockito: ^5.3.2
   build_runner: ^2.3.2
 
