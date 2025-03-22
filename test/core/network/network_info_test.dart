@@ -1,34 +1,34 @@
-import 'package:cross_connectivity/cross_connectivity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:number_trivia/core/network/network_info.dart';
+import 'package:number_trivia/core/util/connectivity_wrapper.dart';
 
-@GenerateNiceMocks([MockSpec<Connectivity>()])
+@GenerateNiceMocks([MockSpec<ConnectivityWrapper>()])
 import 'network_info_test.mocks.dart';
 
 void main() {
-  late MockConnectivity mockConnectivity;
+  late MockConnectivityWrapper mockConnectivityWrapper;
   late NetworkInfoImpl networkInfoImpl;
 
   setUp(() {
-    mockConnectivity = MockConnectivity();
-    networkInfoImpl = NetworkInfoImpl(mockConnectivity as Connectivity);
+    mockConnectivityWrapper = MockConnectivityWrapper();
+    networkInfoImpl = NetworkInfoImpl(mockConnectivityWrapper);
   });
 
   group('isConnected', () {
     test('should forward the call to cross_connectivity package', () async {
       // arrange
       final testConnectionFuture = Future.value(true);
-      when(mockConnectivity.checkConnection())
+      when(mockConnectivityWrapper.checkConnection())
           .thenAnswer((_) => testConnectionFuture);
 
       // act
       final result = networkInfoImpl.isConnected;
 
       // assert
-      verify(mockConnectivity.checkConnection());
+      verify(mockConnectivityWrapper.checkConnection());
       expect(result, testConnectionFuture);
     });
   });
